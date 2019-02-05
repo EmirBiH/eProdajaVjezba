@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ad1b81c5f5b146ec9f14e643a656df74" Name="Diagram1">
+        <EntityTypeShape EntityType="eProdajaModel.Dobavljaci" Width="1.5" PointX="3.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Izlazi" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.IzlazStavke" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.JediniceMjere" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Korisnici" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.KorisniciUloge" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Kupci" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.NarudzbaStavke" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Narudzbe" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Ocjene" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Proizvodi" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Skladista" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Ulazi" Width="1.5" PointX="6" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.UlazStavke" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.Uloge" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eProdajaModel.VrsteProizvoda" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="eProdajaModel.FK_Ulazi_Dobavljaci" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Izlazi_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Izlazi_Narudzbe" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Izlazi_Skladista" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_IzlazStavke_Izlazi" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_IzlazStavke_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Proizvodi_JediniceMjere" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_KorisniciUloge_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Ulazi_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_KorisniciUloge_Uloge" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Narudzbe_Kupci" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Ocjene_Kupci" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_NarudzbaStavke_Narudzbe" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_NarudzbaStavke_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Ocjene_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Proizvodi_VrsteProizvoda" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_UlazStavke_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_Ulazi_Skladista" ManuallyRouted="false" />
+        <AssociationConnector Association="eProdajaModel.FK_UlazStavke_Ulazi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
