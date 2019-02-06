@@ -20,7 +20,14 @@ namespace eProdaja_UI
 
         private void korisniciToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddForm  f= new AddForm();
+            IndexForm  f= new IndexForm();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddForm f = new AddForm();
             f.MdiParent = this;
             f.Show();
         }

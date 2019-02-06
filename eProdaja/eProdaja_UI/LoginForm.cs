@@ -22,29 +22,40 @@ namespace eProdaja_UI
             InitializeComponent();
         }
 
-        private void odustaniButton_Click(object sender, EventArgs e)
+        
+        private void Prijava()
         {
-            Close();
-        }
+            HttpResponseMessage response = korisniciService.GetActionResponse("GetByUserName", korisnickoImeInput.Text);
 
-        private void prijavaButton_Click(object sender, EventArgs e)
-        {
-           HttpResponseMessage response= korisniciService.GetResponse(korisnickoImeInput.Text);
-            if (response.IsSuccessStatusCode)
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                MessageBox.Show(Messages.login_fail, "Greška",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+            else if (response.IsSuccessStatusCode)
             {
                 Korisnici k = response.Content.ReadAsAsync<Korisnici>().Result;
-                if (k.LozinkaHash == UIHelper.GenerateHash(lozinkaInput.Text, k.LozinkaSalt))
+                if (UIHelper.GenerateHash(lozinkaInput.Text, k.LozinkaSalt)==k.LozinkaHash)
                 {
-                    MessageBox.Show("Dobrodošli " + k.Ime + " " + k.Prezime);
                     DialogResult = DialogResult.OK;
+                    Global.prijavljeniKorisnik = k;
+                    Close();
                 }
                 else
-                    MessageBox.Show("Korisničko ime ili lozinka nisu validni!", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Messages.login_fail, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 MessageBox.Show("Error code: " + response.StatusCode + " Message: " + response.ReasonPhrase);
             }
+        }
+
+        private void prijavaButton_Click(object sender, EventArgs e)
+        {
+            Prijava();
+        }
+
+        private void odustaniButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

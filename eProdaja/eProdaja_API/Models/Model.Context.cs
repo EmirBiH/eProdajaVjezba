@@ -49,5 +49,68 @@ namespace eProdaja_API.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Korisnici_Result>("sp_Korisnici_SelectAll");
         }
+    
+        public virtual ObjectResult<Korisnici_Result> sp_Korisnici_SelectbyImePrezime(string imePrezime)
+        {
+            var imePrezimeParameter = imePrezime != null ?
+                new ObjectParameter("ImePrezime", imePrezime) :
+                new ObjectParameter("ImePrezime", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Korisnici_Result>("sp_Korisnici_SelectbyImePrezime", imePrezimeParameter);
+        }
+    
+        public virtual int sp_Korisnici_Update(Nullable<int> id, string ime, string prezime, string email, string telefon, string korisnickoIme, string lozinkaSalt, string lozinkaHash, Nullable<bool> status)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var imeParameter = ime != null ?
+                new ObjectParameter("Ime", ime) :
+                new ObjectParameter("Ime", typeof(string));
+    
+            var prezimeParameter = prezime != null ?
+                new ObjectParameter("Prezime", prezime) :
+                new ObjectParameter("Prezime", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var telefonParameter = telefon != null ?
+                new ObjectParameter("Telefon", telefon) :
+                new ObjectParameter("Telefon", typeof(string));
+    
+            var korisnickoImeParameter = korisnickoIme != null ?
+                new ObjectParameter("KorisnickoIme", korisnickoIme) :
+                new ObjectParameter("KorisnickoIme", typeof(string));
+    
+            var lozinkaSaltParameter = lozinkaSalt != null ?
+                new ObjectParameter("LozinkaSalt", lozinkaSalt) :
+                new ObjectParameter("LozinkaSalt", typeof(string));
+    
+            var lozinkaHashParameter = lozinkaHash != null ?
+                new ObjectParameter("LozinkaHash", lozinkaHash) :
+                new ObjectParameter("LozinkaHash", typeof(string));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Korisnici_Update", idParameter, imeParameter, prezimeParameter, emailParameter, telefonParameter, korisnickoImeParameter, lozinkaSaltParameter, lozinkaHashParameter, statusParameter);
+        }
+    
+        public virtual int sp_KorisniciUloge_Insert(Nullable<int> korisnikID, Nullable<int> ulogaID)
+        {
+            var korisnikIDParameter = korisnikID.HasValue ?
+                new ObjectParameter("KorisnikID", korisnikID) :
+                new ObjectParameter("KorisnikID", typeof(int));
+    
+            var ulogaIDParameter = ulogaID.HasValue ?
+                new ObjectParameter("UlogaID", ulogaID) :
+                new ObjectParameter("UlogaID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_KorisniciUloge_Insert", korisnikIDParameter, ulogaIDParameter);
+        }
     }
 }

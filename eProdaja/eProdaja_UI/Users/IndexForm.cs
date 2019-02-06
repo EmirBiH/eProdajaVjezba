@@ -23,20 +23,15 @@ namespace eProdaja_UI
             InitializeComponent();
         }
 
-        private void ucitajKorinikebtn_Click(object sender, EventArgs e)
+        void BindGrid()
         {
-            
-        }
-
-        void BindForm()
-        {
-            HttpResponseMessage response = korisniciService.GetResponse();
+            HttpResponseMessage response = korisniciService.GetActionResponse("SearchByName",ImePrezimeInput.Text.Trim()??"");
 
             if (response.IsSuccessStatusCode)
             {
                 List<Korisnici_Result> users = response.Content.ReadAsAsync<List<Korisnici_Result>>().Result;
-                korisniciDataView.DataSource = users;
-                korisniciDataView.Columns[0].Visible = false;
+                korisniciDataView.DataSource= users;
+                korisniciDataView.ClearSelection();
             }
             else
             {
@@ -48,13 +43,27 @@ namespace eProdaja_UI
             AddForm f = new AddForm();
             if (f.ShowDialog() == DialogResult.OK)
             {
-                BindForm();
+                BindGrid();
             }
+        }
+
+        private void urediButton_Click(object sender, EventArgs e)
+        {
+            EditForm frm=new EditForm(Convert.ToInt32(korisniciDataView.SelectedRows[0].Cells[0].Value));
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                BindGrid();
+            }
+        }
+
+        private void traziButton_Click(object sender, EventArgs e)
+        {
+            BindGrid();
         }
 
         private void IndexForm_Load(object sender, EventArgs e)
         {
-            BindForm();
+            BindGrid();
         }
     }
 }

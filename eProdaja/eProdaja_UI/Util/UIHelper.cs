@@ -27,7 +27,7 @@ namespace eProdaja_UI.Util
             Buffer.BlockCopy(byteLozinka, 0, forHashing, 0, byteLozinka.Length);
             Buffer.BlockCopy(byteSalt, 0, forHashing, byteLozinka.Length, byteSalt.Length);
 
-            HashAlgorithm alg = HashAlgorithm.Create("SH1");
+            HashAlgorithm alg = HashAlgorithm.Create("SHA1");
 
             return Convert.ToBase64String(alg.ComputeHash(forHashing));
         }

@@ -16,6 +16,7 @@ namespace eProdaja_UI.Users
     public partial class AddForm : Form
     {
         private WebAPIHelper korisniciService = new WebAPIHelper("http://localhost:10733", "api/Korisnici");
+        private WebAPIHelper ulogeService = new WebAPIHelper("http://localhost:10733", "api/Uloge");
 
         public AddForm()
         {
@@ -24,7 +25,13 @@ namespace eProdaja_UI.Users
 
         private void AddForm_Load(object sender, EventArgs e)
         {
-
+            HttpResponseMessage response = ulogeService.GetResponse();
+            if (response.IsSuccessStatusCode)
+            {
+                ulogeList.DataSource = response.Content.ReadAsAsync<Uloge>().Result;
+                ulogeList.DisplayMember = "Naziv";
+                ulogeList.ClearSelected();
+            }
         }
 
         private void dodajButton_Click(object sender, EventArgs e)
@@ -38,6 +45,8 @@ namespace eProdaja_UI.Users
             k.LozinkaSalt = UIHelper.GenerateSalt();
             k.LozinkaHash = UIHelper.GenerateHash(lozinkaInput.Text, k.LozinkaSalt);
             k.Status = true;
+
+            k.Uloge = ulogeList.CheckedItems.Cast<Uloge>().ToList();
 
            HttpResponseMessage response=  korisniciService.PostResponse(k);
 

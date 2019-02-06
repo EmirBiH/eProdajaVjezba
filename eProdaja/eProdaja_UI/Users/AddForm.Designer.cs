@@ -42,6 +42,8 @@
             this.korisnickoImeInput = new System.Windows.Forms.TextBox();
             this.lozinkaInput = new System.Windows.Forms.TextBox();
             this.dodajButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ulogeList = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -111,10 +113,23 @@
             this.dodajButton.UseVisualStyleBackColor = true;
             this.dodajButton.Click += new System.EventHandler(this.dodajButton_Click);
             // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // ulogeList
+            // 
+            this.ulogeList.FormattingEnabled = true;
+            resources.ApplyResources(this.ulogeList, "ulogeList");
+            this.ulogeList.Name = "ulogeList";
+            // 
             // AddForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ulogeList);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dodajButton);
             this.Controls.Add(this.lozinkaInput);
             this.Controls.Add(this.korisnickoImeInput);
@@ -153,5 +168,7 @@
         private System.Windows.Forms.TextBox korisnickoImeInput;
         private System.Windows.Forms.TextBox lozinkaInput;
         private System.Windows.Forms.Button dodajButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckedListBox ulogeList;
     }
 }

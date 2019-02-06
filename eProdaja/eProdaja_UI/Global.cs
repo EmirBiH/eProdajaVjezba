@@ -1,0 +1,14 @@
+﻿using eProdaja_API.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace eProdaja_UI
+{
+    class Global
+    {
+        public static Korisnici prijavljeniKorisnik { get; set; }
+    }
+}

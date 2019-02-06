@@ -19,5 +19,6 @@ namespace eProdaja_API.Models
         public string Email { get; set; }
         public string Telefon { get; set; }
         public string KorisnickoIme { get; set; }
+        public bool Status { get; set; }
     }
 }

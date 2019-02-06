@@ -18,7 +18,7 @@ namespace eProdaja_UI
             Application.SetCompatibleTextRenderingDefault(false);
 
             LoginForm login = new LoginForm();
-            if(login.ShowDialog()==DialogResult.OK)
+            if (login.ShowDialog() == DialogResult.OK)
                 Application.Run(new MainForm());
         }
     }

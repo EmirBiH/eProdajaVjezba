@@ -47,6 +47,7 @@
             // 
             this.lozinkaInput.Location = new System.Drawing.Point(92, 63);
             this.lozinkaInput.Name = "lozinkaInput";
+            this.lozinkaInput.PasswordChar = '*';
             this.lozinkaInput.Size = new System.Drawing.Size(160, 20);
             this.lozinkaInput.TabIndex = 1;
             // 
@@ -103,6 +104,7 @@
             this.MinimizeBox = false;
             this.Name = "LoginForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prijava na sistem";
             this.ResumeLayout(false);
             this.PerformLayout();
