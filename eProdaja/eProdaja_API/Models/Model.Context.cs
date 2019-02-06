@@ -112,5 +112,42 @@ namespace eProdaja_API.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_KorisniciUloge_Insert", korisnikIDParameter, ulogaIDParameter);
         }
+    
+        public virtual int sp_Korisnici_Insert(string ime, string prezime, string email, string telefon, string korisnickoIme, string lozinkaHash, string lozinkSalt, Nullable<bool> status)
+        {
+            var imeParameter = ime != null ?
+                new ObjectParameter("Ime", ime) :
+                new ObjectParameter("Ime", typeof(string));
+    
+            var prezimeParameter = prezime != null ?
+                new ObjectParameter("Prezime", prezime) :
+                new ObjectParameter("Prezime", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var telefonParameter = telefon != null ?
+                new ObjectParameter("Telefon", telefon) :
+                new ObjectParameter("Telefon", typeof(string));
+    
+            var korisnickoImeParameter = korisnickoIme != null ?
+                new ObjectParameter("KorisnickoIme", korisnickoIme) :
+                new ObjectParameter("KorisnickoIme", typeof(string));
+    
+            var lozinkaHashParameter = lozinkaHash != null ?
+                new ObjectParameter("LozinkaHash", lozinkaHash) :
+                new ObjectParameter("LozinkaHash", typeof(string));
+    
+            var lozinkSaltParameter = lozinkSalt != null ?
+                new ObjectParameter("LozinkSalt", lozinkSalt) :
+                new ObjectParameter("LozinkSalt", typeof(string));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Korisnici_Insert", imeParameter, prezimeParameter, emailParameter, telefonParameter, korisnickoImeParameter, lozinkaHashParameter, lozinkSaltParameter, statusParameter);
+        }
     }
 }

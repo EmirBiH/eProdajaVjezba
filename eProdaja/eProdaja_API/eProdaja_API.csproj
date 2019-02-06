@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
+    <Compile Include="Util\ExceptionHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -122,6 +123,7 @@
     <Compile Include="Models\Korisnici.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\KorisniciExtension.cs" />
     <Compile Include="Models\KorisniciUloge.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

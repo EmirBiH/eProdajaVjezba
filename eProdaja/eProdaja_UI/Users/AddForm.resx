@@ -321,14 +321,14 @@
   <data name="telefonInput.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 120</value>
   </data>
+  <data name="telefonInput.Mask" xml:space="preserve">
+    <value>(999) 000-0000</value>
+  </data>
   <data name="telefonInput.Size" type="System.Drawing.Size, System.Drawing">
     <value>193, 20</value>
   </data>
   <data name="telefonInput.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="telefonInput.Text" xml:space="preserve">
-    <value>(__)___-___</value>
   </data>
   <data name="&gt;&gt;telefonInput.Name" xml:space="preserve">
     <value>telefonInput</value>
@@ -525,6 +525,9 @@
   <data name="&gt;&gt;ulogeList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -536,6 +539,12 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Novi korisnik</value>
+  </data>
+  <data name="&gt;&gt;errorProvider.Name" xml:space="preserve">
+    <value>errorProvider</value>
+  </data>
+  <data name="&gt;&gt;errorProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>AddForm</value>

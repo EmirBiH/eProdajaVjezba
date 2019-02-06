@@ -123,7 +123,31 @@
   <data name="edit_usr_succ" xml:space="preserve">
     <value>Uspješno ste izmijenili podatke o korisniku.</value>
   </data>
+  <data name="email_con" xml:space="preserve">
+    <value>Email adresa je zauzeta.</value>
+  </data>
+  <data name="email_err" xml:space="preserve">
+    <value>Email je u pogeršnom formatu.</value>
+  </data>
+  <data name="email_req" xml:space="preserve">
+    <value>Email je obavezan.</value>
+  </data>
+  <data name="fname_req" xml:space="preserve">
+    <value>Ime je obavezno.</value>
+  </data>
+  <data name="lname_req" xml:space="preserve">
+    <value>Prezime je obavezno.</value>
+  </data>
   <data name="login_fail" xml:space="preserve">
     <value>Pogrešno korisničko ime ili lozinka.</value>
+  </data>
+  <data name="pass_format" xml:space="preserve">
+    <value>Minimalno 8 karaktera, najmanje jedno slovo i jedan broj.</value>
+  </data>
+  <data name="pass_req" xml:space="preserve">
+    <value>Lozinka je obavezna.</value>
+  </data>
+  <data name="username_con" xml:space="preserve">
+    <value>Korisnicko ime je zauzeto.</value>
   </data>
 </root>

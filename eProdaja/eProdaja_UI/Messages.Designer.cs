@@ -79,11 +79,83 @@ namespace eProdaja_UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email adresa je zauzeta..
+        /// </summary>
+        internal static string email_con {
+            get {
+                return ResourceManager.GetString("email_con", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email je u pogeršnom formatu..
+        /// </summary>
+        internal static string email_err {
+            get {
+                return ResourceManager.GetString("email_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email je obavezan..
+        /// </summary>
+        internal static string email_req {
+            get {
+                return ResourceManager.GetString("email_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ime je obavezno..
+        /// </summary>
+        internal static string fname_req {
+            get {
+                return ResourceManager.GetString("fname_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prezime je obavezno..
+        /// </summary>
+        internal static string lname_req {
+            get {
+                return ResourceManager.GetString("lname_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pogrešno korisničko ime ili lozinka..
         /// </summary>
         internal static string login_fail {
             get {
                 return ResourceManager.GetString("login_fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimalno 8 karaktera, najmanje jedno slovo i jedan broj..
+        /// </summary>
+        internal static string pass_format {
+            get {
+                return ResourceManager.GetString("pass_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lozinka je obavezna..
+        /// </summary>
+        internal static string pass_req {
+            get {
+                return ResourceManager.GetString("pass_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korisnicko ime je zauzeto..
+        /// </summary>
+        internal static string username_con {
+            get {
+                return ResourceManager.GetString("username_con", resourceCulture);
             }
         }
     }

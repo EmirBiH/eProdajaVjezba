@@ -1,6 +1,8 @@
 ﻿using eProdaja_API.Models;
+using eProdaja_API.Util;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,7 +15,7 @@ namespace eProdaja_API.Controllers
     {
         private eProdajaEntities db = new eProdajaEntities();
 
-
+        [HttpGet]
         [Route("api/Korisnici")]
         public IHttpActionResult GetKorisnici()
         {
@@ -47,18 +49,38 @@ namespace eProdaja_API.Controllers
             return Ok(db.sp_Korisnici_SelectbyImePrezime(name).ToList());
         }
 
+        [HttpPost]
+        [Route("api/Korisnici")]
         public IHttpActionResult PostKorisnici(Korisnici obj)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-            db.Korisnici.Add(obj);
-            db.SaveChanges();
+            try
+            {
+                db.sp_Korisnici_Insert(obj.Ime, obj.Prezime, obj.Email, obj.Telefon,
+                       obj.KorisnickoIme, obj.LozinkaHash, obj.LozinkaSalt, obj.Status);
+            }
+            catch (EntityException ex)
+            {
+                throw CreateHttpResponseException(ExceptionHandler.HandleException(ex), HttpStatusCode.Conflict);
+            }
 
             foreach (var item in obj.Uloge)
             {
                 db.sp_KorisniciUloge_Insert(obj.KorisnikID, item.UlogaID);
             }
             return CreatedAtRoute("DefaultApi", new { id = obj.KorisnikID }, obj);
+        }
+
+        private HttpResponseException CreateHttpResponseException(string reson, HttpStatusCode code)
+        {
+            HttpResponseMessage msg = new HttpResponseMessage()
+            {
+                StatusCode = code,
+                ReasonPhrase = reson,
+                Content = new StringContent(reson)
+            };
+            return new HttpResponseException(msg);
         }
 
         public IHttpActionResult PutKorisnici(int id,Korisnici obj)

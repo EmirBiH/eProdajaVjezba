@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@
             this.dodajButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.ulogeList = new System.Windows.Forms.CheckedListBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -85,16 +88,19 @@
             // 
             resources.ApplyResources(this.imeInput, "imeInput");
             this.imeInput.Name = "imeInput";
+            this.imeInput.Validating += new System.ComponentModel.CancelEventHandler(this.imeInput_Validating);
             // 
             // prezimeInput
             // 
             resources.ApplyResources(this.prezimeInput, "prezimeInput");
             this.prezimeInput.Name = "prezimeInput";
+            this.prezimeInput.Validating += new System.ComponentModel.CancelEventHandler(this.prezimeInput_Validating);
             // 
             // emailInput
             // 
             resources.ApplyResources(this.emailInput, "emailInput");
             this.emailInput.Name = "emailInput";
+            this.emailInput.Validating += new System.ComponentModel.CancelEventHandler(this.emailInput_Validating);
             // 
             // korisnickoImeInput
             // 
@@ -105,6 +111,7 @@
             // 
             resources.ApplyResources(this.lozinkaInput, "lozinkaInput");
             this.lozinkaInput.Name = "lozinkaInput";
+            this.lozinkaInput.Validating += new System.ComponentModel.CancelEventHandler(this.lozinkaInput_Validating);
             // 
             // dodajButton
             // 
@@ -123,6 +130,10 @@
             this.ulogeList.FormattingEnabled = true;
             resources.ApplyResources(this.ulogeList, "ulogeList");
             this.ulogeList.Name = "ulogeList";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // AddForm
             // 
@@ -148,6 +159,7 @@
             this.Name = "AddForm";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.AddForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,5 +182,6 @@
         private System.Windows.Forms.Button dodajButton;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckedListBox ulogeList;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

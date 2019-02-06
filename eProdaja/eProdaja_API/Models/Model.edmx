@@ -410,6 +410,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_Korisnici_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ime" Type="nvarchar" Mode="In" />
+          <Parameter Name="Prezime" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefon" Type="nvarchar" Mode="In" />
+          <Parameter Name="KorisnickoIme" Type="nvarchar" Mode="In" />
+          <Parameter Name="LozinkaHash" Type="nvarchar" Mode="In" />
+          <Parameter Name="LozinkSalt" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
         <Function Name="sp_Korisnici_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Korisnici_SelectbyImePrezime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ImePrezime" Type="nvarchar" Mode="In" />
@@ -1082,6 +1092,16 @@
             <Parameter Name="KorisnikID" Mode="In" Type="Int32" />
             <Parameter Name="UlogaID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_Korisnici_Insert">
+            <Parameter Name="Ime" Mode="In" Type="String" />
+            <Parameter Name="Prezime" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telefon" Mode="In" Type="String" />
+            <Parameter Name="KorisnickoIme" Mode="In" Type="String" />
+            <Parameter Name="LozinkaHash" Mode="In" Type="String" />
+            <Parameter Name="LozinkSalt" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Korisnici_Result">
           <Property Type="Int32" Name="KorisnikID" Nullable="false" />
@@ -1318,6 +1338,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_Korisnici_Update" FunctionName="eProdajaModel.Store.sp_Korisnici_Update" />
           <FunctionImportMapping FunctionImportName="sp_KorisniciUloge_Insert" FunctionName="eProdajaModel.Store.sp_KorisniciUloge_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_Korisnici_Insert" FunctionName="eProdajaModel.Store.sp_Korisnici_Insert" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
