@@ -130,6 +130,7 @@
             this.ulogeList.FormattingEnabled = true;
             resources.ApplyResources(this.ulogeList, "ulogeList");
             this.ulogeList.Name = "ulogeList";
+            this.ulogeList.Validating += new System.ComponentModel.CancelEventHandler(this.ulogeList_Validating);
             // 
             // errorProvider
             // 

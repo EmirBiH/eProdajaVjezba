@@ -44,6 +44,23 @@ namespace eProdaja_UI.Users
             emailInput.Text = k.Email;
             korisnickoImeInput.Text = k.KorisnickoIme;
             statusCheckBox.Checked = k.Status;
+
+            HttpResponseMessage checkUloge= korisniciService.GetActionResponse("UlogeZaKorisnika",k.KorisnikID.ToString());
+            HttpResponseMessage sveUloge = ulogeService.GetResponse();
+            if (sveUloge.IsSuccessStatusCode && checkUloge.IsSuccessStatusCode)
+            {
+                List<Uloge> su = sveUloge.Content.ReadAsAsync<List<Uloge>>().Result;
+                List<int> cu = checkUloge.Content.ReadAsAsync<List<int>>().Result;
+                foreach (var item in su)
+                {
+                    if (cu.Contains(item.UlogaID))
+                        ulogeList.Items.Add(item, true);
+                    else
+                        ulogeList.Items.Add(item, false);
+                }
+            }
+            ulogeList.DisplayMember = "Naziv";
+
         }
 
         private void snimiButton_Click(object sender, EventArgs e)
@@ -57,7 +74,9 @@ namespace eProdaja_UI.Users
                 k.KorisnickoIme = korisnickoImeInput.Text;
                 k.Status = statusCheckBox.Checked;
 
-                if (labelLozinka.Text != String.Empty)
+                k.Uloge = ulogeList.CheckedItems.Cast<Uloge>().ToList();
+
+                if (!String.IsNullOrEmpty(labelLozinka.Text))
                 {
                     k.LozinkaSalt = UIHelper.GenerateSalt();
                     k.LozinkaHash = UIHelper.GenerateHash(lozinkaInput.Text, k.LozinkaSalt);

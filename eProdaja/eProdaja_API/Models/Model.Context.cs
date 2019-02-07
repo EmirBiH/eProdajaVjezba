@@ -149,5 +149,33 @@ namespace eProdaja_API.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Korisnici_Insert", imeParameter, prezimeParameter, emailParameter, telefonParameter, korisnickoImeParameter, lozinkaHashParameter, lozinkSaltParameter, statusParameter);
         }
+    
+        public virtual ObjectResult<Uloge> sp_Uloge_SelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Uloge>("sp_Uloge_SelectAll");
+        }
+    
+        public virtual ObjectResult<Uloge> sp_Uloge_SelectAll(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Uloge>("sp_Uloge_SelectAll", mergeOption);
+        }
+    
+        public virtual int sp_KorisniciUloge_Delete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_KorisniciUloge_Delete", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_KorisniciUloge_SelectByUserId(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_KorisniciUloge_SelectByUserId", idParameter);
+        }
     }
 }

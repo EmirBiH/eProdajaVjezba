@@ -133,6 +133,15 @@ namespace eProdaja_UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Potrebno je izabrati korisnika za izmjenu..
+        /// </summary>
+        internal static string noUserId {
+            get {
+                return ResourceManager.GetString("noUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimalno 8 karaktera, najmanje jedno slovo i jedan broj..
         /// </summary>
         internal static string pass_format {
@@ -147,6 +156,15 @@ namespace eProdaja_UI {
         internal static string pass_req {
             get {
                 return ResourceManager.GetString("pass_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Potrebno je izabrati najmanje jednu ulogu..
+        /// </summary>
+        internal static string uloge_count {
+            get {
+                return ResourceManager.GetString("uloge_count", resourceCulture);
             }
         }
         

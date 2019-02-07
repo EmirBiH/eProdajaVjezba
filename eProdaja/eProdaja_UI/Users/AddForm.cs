@@ -31,7 +31,7 @@ namespace eProdaja_UI.Users
             HttpResponseMessage response = ulogeService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
-                ulogeList.DataSource = response.Content.ReadAsAsync<Uloge>().Result;
+                ulogeList.DataSource = response.Content.ReadAsAsync<List<Uloge>>().Result;
                 ulogeList.DisplayMember = "Naziv";
                 ulogeList.ClearSelected();
             }
@@ -139,6 +139,14 @@ namespace eProdaja_UI.Users
                 }
             }
             errorProvider.SetError(lozinkaInput, null);
+        }
+
+        private void ulogeList_Validating(object sender, CancelEventArgs e)
+        {
+            if (ulogeList.CheckedItems.Count < 1)
+                errorProvider.SetError(ulogeList, Messages.uloge_count);
+            else
+                errorProvider.SetError(ulogeList, null);
         }
     }
 }

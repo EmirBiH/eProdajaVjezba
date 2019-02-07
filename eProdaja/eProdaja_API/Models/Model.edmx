@@ -435,10 +435,17 @@
           <Parameter Name="LozinkaHash" Type="nvarchar" Mode="In" />
           <Parameter Name="Status" Type="bit" Mode="In" />
         </Function>
+        <Function Name="sp_KorisniciUloge_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_KorisniciUloge_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="KorisnikID" Type="int" Mode="In" />
           <Parameter Name="UlogaID" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_KorisniciUloge_SelectByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Uloge_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="eProdajaModelStoreContainer">
           <EntitySet Name="Dobavljaci" EntityType="Self.Dobavljaci" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Izlazi" EntityType="Self.Izlazi" Schema="dbo" store:Type="Tables" />
@@ -1102,6 +1109,13 @@
             <Parameter Name="LozinkSalt" Mode="In" Type="String" />
             <Parameter Name="Status" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="sp_Uloge_SelectAll" EntitySet="Uloge" ReturnType="Collection(eProdajaModel.Uloge)" />
+          <FunctionImport Name="sp_KorisniciUloge_Delete">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_KorisniciUloge_SelectByUserId" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Korisnici_Result">
           <Property Type="Int32" Name="KorisnikID" Nullable="false" />
@@ -1339,6 +1353,11 @@
           <FunctionImportMapping FunctionImportName="sp_Korisnici_Update" FunctionName="eProdajaModel.Store.sp_Korisnici_Update" />
           <FunctionImportMapping FunctionImportName="sp_KorisniciUloge_Insert" FunctionName="eProdajaModel.Store.sp_KorisniciUloge_Insert" />
           <FunctionImportMapping FunctionImportName="sp_Korisnici_Insert" FunctionName="eProdajaModel.Store.sp_Korisnici_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_Uloge_SelectAll" FunctionName="eProdajaModel.Store.sp_Uloge_SelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_KorisniciUloge_Delete" FunctionName="eProdajaModel.Store.sp_KorisniciUloge_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_KorisniciUloge_SelectByUserId" FunctionName="eProdajaModel.Store.sp_KorisniciUloge_SelectByUserId" >
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

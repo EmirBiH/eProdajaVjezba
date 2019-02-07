@@ -141,11 +141,17 @@
   <data name="login_fail" xml:space="preserve">
     <value>Pogrešno korisničko ime ili lozinka.</value>
   </data>
+  <data name="noUserId" xml:space="preserve">
+    <value>Potrebno je izabrati korisnika za izmjenu.</value>
+  </data>
   <data name="pass_format" xml:space="preserve">
     <value>Minimalno 8 karaktera, najmanje jedno slovo i jedan broj.</value>
   </data>
   <data name="pass_req" xml:space="preserve">
     <value>Lozinka je obavezna.</value>
+  </data>
+  <data name="uloge_count" xml:space="preserve">
+    <value>Potrebno je izabrati najmanje jednu ulogu.</value>
   </data>
   <data name="username_con" xml:space="preserve">
     <value>Korisnicko ime je zauzeto.</value>

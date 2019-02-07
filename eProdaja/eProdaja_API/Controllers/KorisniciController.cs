@@ -23,30 +23,13 @@ namespace eProdaja_API.Controllers
         }
 
         [ResponseType(typeof(Korisnici))]
+        [Route("api/Korisnici/{Id}")]
         public IHttpActionResult GetKorisnici(int Id)
         {
             Korisnici k = db.Korisnici.Find(Id);
             if (k == null)
-                NotFound();
+               return NotFound();
             return Ok(k);
-        }
-
-        [ResponseType(typeof(Korisnici))]
-        [Route("api/Korisnici/GetByUserName/{username}")]
-        public IHttpActionResult GetByUserName(string username)
-        {
-            Korisnici k = db.Korisnici.Where(x => x.KorisnickoIme == username).FirstOrDefault();
-
-            if (k == null)
-                return NotFound();
-            return Ok(k);
-        }
-
-        [HttpGet]
-        [Route("api/Korisnici/SearchByName/{name?}")]
-        public IHttpActionResult SearchByName(string name="")
-        {
-            return Ok(db.sp_Korisnici_SelectbyImePrezime(name).ToList());
         }
 
         [HttpPost]
@@ -72,6 +55,52 @@ namespace eProdaja_API.Controllers
             return CreatedAtRoute("DefaultApi", new { id = obj.KorisnikID }, obj);
         }
 
+        [HttpPut]
+        [Route("api/Korisnici/{id}")]
+        public IHttpActionResult PutKorisnici(int id, Korisnici obj)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (id != obj.KorisnikID)
+                return BadRequest();
+
+            db.sp_Korisnici_Update(obj.KorisnikID, obj.Ime, obj.Prezime, obj.Email, obj.Telefon, obj.KorisnickoIme, obj.LozinkaSalt, obj.LozinkaHash, obj.Status);
+
+            db.sp_KorisniciUloge_Delete(obj.KorisnikID);
+            foreach (var x in obj.Uloge)
+                db.sp_KorisniciUloge_Insert(id, x.UlogaID);
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        [ResponseType(typeof(Korisnici))]
+        [Route("api/Korisnici/GetByUserName/{username}")]
+        public IHttpActionResult GetByUserName(string username)
+        {
+            Korisnici k = db.Korisnici.Where(x => x.KorisnickoIme == username).FirstOrDefault();
+
+            if (k == null)
+                return NotFound();
+            return Ok(k);
+        }
+
+        [HttpGet]
+        [Route("api/Korisnici/SearchByName/{name?}")]
+        public IHttpActionResult SearchByName(string name = "")
+        {
+            return Ok(db.sp_Korisnici_SelectbyImePrezime(name).ToList());
+        }
+
+        [HttpGet]
+        [Route("api/Korisnici/UlogeZaKorisnika/{id}")]
+        public IHttpActionResult UlogeZaKorisnika(int id)
+        {
+            List<int?> uloge= db.sp_KorisniciUloge_SelectByUserId(id).ToList();
+            if (uloge.Count < 1)
+                return NotFound();
+            return Ok(uloge);
+        }
+
         private HttpResponseException CreateHttpResponseException(string reson, HttpStatusCode code)
         {
             HttpResponseMessage msg = new HttpResponseMessage()
@@ -83,17 +112,6 @@ namespace eProdaja_API.Controllers
             return new HttpResponseException(msg);
         }
 
-        public IHttpActionResult PutKorisnici(int id,Korisnici obj)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            if (id != obj.KorisnikID)
-                return BadRequest();
-
-            db.sp_Korisnici_Update(obj.KorisnikID,obj.Ime,obj.Prezime,obj.Email,obj.Telefon,obj.KorisnickoIme,obj.LozinkaSalt,obj.LozinkaHash,obj.Status);
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

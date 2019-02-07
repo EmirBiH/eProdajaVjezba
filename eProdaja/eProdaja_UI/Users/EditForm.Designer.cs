@@ -43,6 +43,8 @@
             this.snimiButton = new System.Windows.Forms.Button();
             this.labelLozinka = new System.Windows.Forms.Label();
             this.lozinkaInput = new System.Windows.Forms.TextBox();
+            this.ulogeList = new System.Windows.Forms.CheckedListBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // korisnickoImeInput
@@ -161,7 +163,7 @@
             // 
             // snimiButton
             // 
-            this.snimiButton.Location = new System.Drawing.Point(229, 202);
+            this.snimiButton.Location = new System.Drawing.Point(290, 319);
             this.snimiButton.Name = "snimiButton";
             this.snimiButton.Size = new System.Drawing.Size(75, 23);
             this.snimiButton.TabIndex = 25;
@@ -186,11 +188,31 @@
             this.lozinkaInput.Size = new System.Drawing.Size(193, 20);
             this.lozinkaInput.TabIndex = 27;
             // 
+            // ulogeList
+            // 
+            this.ulogeList.FormattingEnabled = true;
+            this.ulogeList.Location = new System.Drawing.Point(111, 210);
+            this.ulogeList.Name = "ulogeList";
+            this.ulogeList.Size = new System.Drawing.Size(193, 94);
+            this.ulogeList.TabIndex = 29;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label7.Location = new System.Drawing.Point(56, 224);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Uloge:";
+            // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 237);
+            this.ClientSize = new System.Drawing.Size(377, 354);
+            this.Controls.Add(this.ulogeList);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lozinkaInput);
             this.Controls.Add(this.labelLozinka);
             this.Controls.Add(this.snimiButton);
@@ -233,5 +255,7 @@
         private System.Windows.Forms.Button snimiButton;
         private System.Windows.Forms.Label labelLozinka;
         private System.Windows.Forms.TextBox lozinkaInput;
+        private System.Windows.Forms.CheckedListBox ulogeList;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -21,12 +21,13 @@ namespace eProdaja_UI
         public IndexForm()
         {
             InitializeComponent();
+            noUserId.Hide();
         }
 
         void BindGrid()
         {
             HttpResponseMessage response = korisniciService.GetActionResponse("SearchByName",ImePrezimeInput.Text.Trim()??"");
-
+            noUserId.Hide();
             if (response.IsSuccessStatusCode)
             {
                 List<Korisnici_Result> users = response.Content.ReadAsAsync<List<Korisnici_Result>>().Result;
@@ -49,10 +50,19 @@ namespace eProdaja_UI
 
         private void urediButton_Click(object sender, EventArgs e)
         {
-            EditForm frm=new EditForm(Convert.ToInt32(korisniciDataView.SelectedRows[0].Cells[0].Value));
-            if (frm.ShowDialog() == DialogResult.OK)
+            if (korisniciDataView.SelectedRows.Count>=1)
             {
-                BindGrid();
+                Convert.ToInt32(korisniciDataView.SelectedRows[0].Cells[0].Value);
+                EditForm frm = new EditForm(Convert.ToInt32(korisniciDataView.SelectedRows[0].Cells[0].Value));
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    BindGrid();
+                }
+            }
+            else
+            {
+                noUserId.Text = Messages.noUserId;
+                noUserId.Show();
             }
         }
 
